@@ -1,0 +1,8 @@
+www:
+    image: nginx:1.17.8
+    restart: always
+    ports:
+        - "80:80"
+    volumes:
+        - /data/sisglobal/:/usr/share/nginx/html:ro
+

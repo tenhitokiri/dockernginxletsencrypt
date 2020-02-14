@@ -1,8 +1,18 @@
+nginx-proxy:
+    image: jwilder/nginx-proxy
+    restart: always
+    ports: 
+        - "80:80"
+    volumes:
+        - /var/run/docker.sock:/tmp/docker.sock:ro
+
 www:
     image: nginx:1.17.8
     restart: always
-    ports:
-        - "80:80"
+    expose:
+        - "80"
     volumes:
         - /data/sisglobal/:/usr/share/nginx/html:ro
+    environment:
+        - VIRTUAL_HOST=sisglobal.local,www.sisglobal.local,10.10.0.7
 
